@@ -117,15 +117,28 @@ function Todos() {
             <li>
               <button
                 type="button"
+                
                 className="cursor-pointer rounded-[3px] border border-transparent px-[7px] py-[3px] hover:border-[#b83f45]/10"
               >
                 Completed
               </button>
             </li>
           </ul>
-          <button type="button" className="cursor-pointer justify-self-end hover:underline">
+          
+           {todos.filter((todo) => todo.completed).length > 0 && (
+            <>
+          <button
+            type="button"
+            onClick={() => {
+              setTodos(todos.filter((todo) => !todo.completed));
+              setCounter(todos.filter((todo) => !todo.completed).length);
+            }}
+            className="cursor-pointer justify-self-end hover:underline"
+>
             Clear completed
-          </button>
+            </button>
+          </>
+          )}
         </footer>
          </>
         )}
